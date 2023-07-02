@@ -1,0 +1,36 @@
+// IMPORTO BS PARA PERSONALIZAR
+
+
+$primary: red;
+
+.btn-outline-success {
+    @include button-outline-variant(black, $fondo, lighten($fondo, 100%), $fondo);
+    --bs-btn-border-color: $bordescolor;
+    --bs-border-width: 3px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: CENTER;
+    max-width: 768px !important;
+}
+
+.carousel-item.active {
+    text-align: center;
+}
+
+.carousel-inner img {
+    min-height: 20pc;
+    min-width: 25pc !important;
+    height: 350px;
+
+    @include movil {
+        min-height: 30pc;
+        min-width: 50pc !important;
+    }
+}
+
+.form-select{
+    width: auto;
+}

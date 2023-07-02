@@ -1,0 +1,216 @@
+// RESETEO
+
+* {
+    padding: 0px;
+}
+$primary: black;
+$breakpoint-sm: 665px;
+$fondo: #28bce5;
+$bordescolor: white;
+
+// CAMBIO EL COLOR PRIMARIO DE BS
+
+// FUENTES
+@font-face {
+    font-family: SourceCodePro;
+    src: url(../fuentes/SourceCodePro-Black.otf);
+}
+
+@mixin movil() {
+    @media screen and (min-width: $breakpoint-sm) {
+        @content;
+    }
+
+}
+
+@mixin movil2() {
+    @media screen and (max-width: $breakpoint-sm) {
+        @content;
+    }
+
+}
+// CORRECCION - FOOTER Y HEADER QUEDAN FIJOS - RESPONSIVE
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $fondo !important
+    
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    
+}
+
+.menu {
+    position: relative;
+    margin: 30px 5%;
+    width: 100%;
+    display: contents;
+
+    @include movil {
+        width: -webkit-fill-available;
+        position: relative;
+        margin: 0px 10%;
+        order: 4;
+        display: block;
+
+    }
+
+
+
+    &__imagen {
+       
+        height: 40px;
+        cursor: pointer;
+
+        @include movil {
+            display: none;
+        }
+    }
+
+
+    @include movil2 {
+        &:hover>nav ul li {
+            display: block;
+        }
+
+    }
+
+    &__desplegable {
+        position: fixed;
+        z-index: 200;
+        width: 90%;
+        display: block;
+        left: 3%;
+        &__item {
+            display: none;
+            list-style: none;
+            position: relative;
+            padding: 10px 20px;
+            borDER: $bordescolor 3PX SOLID;
+            border-radius: 10px;
+            margin: 1px -20px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            z-index: 1;
+            background: $fondo;
+            font-size: xx-large;
+            & a{
+                text-decoration: none;
+            }
+
+          
+        }
+
+    }
+
+    &__horizontal {
+        display: none;
+
+
+        @include movil {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+
+        &__item {
+            list-style: none;
+
+            padding: 10px 20px;
+            borDER: $bordescolor 3PX SOLID;
+            border-radius: 10px;
+            margin: 1px -20px;
+
+            text-align: center;
+            cursor: pointer;
+
+            width: 20%;
+            & a{
+                text-decoration: none;
+            }
+
+        }
+
+    }
+
+}
+// zeteo tamaño logo, centro en vercion movil
+.logo {
+    width: 120px;
+    @include movil2 {
+        margin-left: -25%;
+        margin-right: 25%; 
+
+    }
+   
+}
+// pocision carrito compra y usuario 
+.iconos {
+
+
+    @include movil {
+        order: 3;
+
+    }
+
+}
+
+.buscador {
+    text-align: -webkit-center;
+    width: 50%;
+}
+
+
+
+footer {
+    margin-top: auto;
+}
+
+.menu_pie {
+    display: flex;
+    padding: 20px 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+// CARRITO.HTML
+.img_construccion {
+    display: flex;
+    flex-direction: column;
+}
+
+
+// INDEX.HTML
+.productos {
+    display: grid;
+    justify-items: center;
+
+    &__contenedor {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        @include movil2 {
+            grid-template-columns: repeat(1, 1fr);
+
+        }
+
+        &__imagen {
+            width: 300px;
+            height: 160px;
+            border: $bordescolor solid 3px;
+            padding: 2px;
+
+        }
+    }
+}
+
+@import "../bootstrap/scss/bootstrap.scss";
+@import "../scss/boostrap_edit.scss";
